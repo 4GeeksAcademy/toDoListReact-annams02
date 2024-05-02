@@ -1,6 +1,7 @@
 
 import React, {useState, useEffect}from "react";
 
+
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
 
@@ -18,6 +19,7 @@ const Home = () => {
 	const controlarEnter = (e) => {
 		if (e.key === 'Enter') {
 			setTareas(tareas.concat(inputValue));
+			setInputValue ("");
 		}
 	}
 	
@@ -31,19 +33,21 @@ const Home = () => {
 
 	return (
 		<div className="container">
-			<div className="row justify-content-center">
-				<h1>To Do List</h1>
+			<div className="text-center txt-light my-4">
+				<h1><strong>TO DO LIST</strong></h1>
 				<ul>
-					<li><input type="text" onChange={controlarInput} onKeyDown={controlarEnter} value={inputValue} placeholder="What do you need in your to do list?" ></input> </li>
-					{tareas.map((t, index) => <li key={index}>{t} <button onClick={() => deleteItems (index)} className="fa-light fa-trash"></button></li>)}
+					<li><input className= "form-control m-auto" type="text" onChange={controlarInput} onKeyDown={controlarEnter} value={inputValue} placeholder="What do you need in your to do list?" ></input> </li>
+					{tareas.map((t, index) => <li key={index}>{t} <button onClick={() => deleteItems (index)}><i className="fa-solid fa-trash"></i></button></li>)}
 			
 				</ul>	
 			</div>
 
-				<div> {tareas.length} tasks</div>
+				<div className="text-center text-bold my-4 total"> {tareas.length} tasks </ div>
 
 		</div>
 	);
 };
 
 export default Home;
+
+
